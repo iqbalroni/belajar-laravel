@@ -1,10 +1,12 @@
 @extends('layouts.master')
 
+@section('title','Tambah Kategori')
+
 @section('konten')
-    <h1>Tambah Daftar Produk</h1>
+    <h1>Tambah Daftar Kategori</h1>
     <hr>
     <div class="card">
-        <div class="card-header">Tambah Data Produk</div>
+        <div class="card-header">Tambah Data Kategori</div>
         <div class="card-body">
             <form action="/kategori" method="POST">
                 @csrf

@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
+@section('title','Tambah Data Produk')
+
 @section('konten')
-    <h1>Tambah Daftar Produk</h1>
-    <hr>
     <div class="card">
         <div class="card-header">Tambah Data Produk</div>
         <div class="card-body">
@@ -24,6 +24,29 @@
                             <input type="text" class="form-control" name="harga_produk"
                                 value="{{ old('harga_produk') }}">
                             @error('harga_produk')
+                                <div class="form-text text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label class="form-label">Stok </label>
+                            <input type="text" class="form-control" name="stok" value="{{ old('stok') }}">
+                            @error('stok')
+                                <div class="form-text text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label class="form-label">Kategori </label>
+                            <select class="form-select" aria-label="Default select example" name="kategori">
+                                <option value="">Pilih Disini</option>
+                                @foreach ($data as $item)
+                                    <option value="{{$item->id_kategori}}">{{$item->nama_kategori}}</option>
+                                @endforeach
+                            </select>
+                            @error('kategori')
                                 <div class="form-text text-danger">{{ $message }}</div>
                             @enderror
                         </div>

@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
+@section('title','Daftar Produk')
+
 @section('konten')
-    <h1>Daftar Produk Kami</h1>
-    <hr>
     <a href="/product/create" class="btn btn-sm btn-primary mb-3">Tambah Data</a>
     <div class="alert alert-primary" role="alert">
         <b>Nama Toko : </b> {{ $data_toko['nama_toko'] }} <br>
@@ -31,9 +31,11 @@
                 <thead>
                     <tr>
                         <th scope="col">No</th>
+                        <th scope="col">Kode Produk</th>
                         <th scope="col">Nama Produk</th>
                         <th scope="col">Harga</th>
-                        <th scope="col">Deskripsi</th>
+                        <th scope="col">Stok</th>
+                        <th scope="col">Kategori</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
@@ -41,9 +43,11 @@
                     @forelse ($data_produk as $item)
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
+                            <td>{{ $item->kode_produk }}</td>
                             <td>{{ $item->nama_produk }}</td>
                             <td>{{ $item->harga }}</td>
-                            <td>{{ $item->deskripsi_produk }}</td>
+                            <td>{{ $item->stok }}</td>
+                            <td>{{ $item->nama_kategori }}</td>
                             <td>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                     data-bs-target="#hapus{{ $item->id_produk }}">Hapus
@@ -63,7 +67,7 @@
         </div>
     </div>
 
-
+    {{-- untuk notifikasi penghapusan data produk --}}
     @foreach ($data_produk as $item)
         <div class="modal fade" id="hapus{{ $item->id_produk }}" data-bs-backdrop="static" data-bs-keyboard="false"
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
